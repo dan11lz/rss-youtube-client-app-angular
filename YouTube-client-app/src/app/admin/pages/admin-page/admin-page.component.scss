@@ -1,0 +1,87 @@
+@import "../../../../styles/colors";
+
+.admin-page {
+  display: flex;
+  justify-content: center;
+
+  &__wrapper {
+    width: 430px;
+    height: fit-content;
+    max-height: 955px;
+    margin: 20px 0;
+    gap: 20px;
+
+    background-color: $third-grey-font-color;
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 18px;
+    color: $dark-font-color;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__fields-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+  }
+
+  &__add-tag-btn {
+    width: 100%;
+    border-radius: 12px;
+
+    font-weight: 400;
+  }
+
+  &__btn-wrapper {
+    display: flex;
+    justify-content: space-between;
+
+    .btn {
+      width: 120px;
+      padding: 0;
+      border-radius: 12px;
+
+      font-weight: 400;
+    }
+  }
+
+  &__limit-message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 80px);
+    margin: 0;
+
+    font-weight: 700;
+    font-size: 24px;
+    color: $secodary-grey-font-color;
+  }
+}
+
+.form-field {
+  width: 398px;
+
+  input {
+    font-size: 12px;
+  }
+}
+
+:host ::ng-deep .form-field {
+  .mdc-text-field {
+    padding: 0 10px;
+  }
+  .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+    background-color: #ffffff;
+  }
+  .mdc-text-field--filled {
+    --mdc-filled-text-field-container-shape: 0px;
+  }
+}

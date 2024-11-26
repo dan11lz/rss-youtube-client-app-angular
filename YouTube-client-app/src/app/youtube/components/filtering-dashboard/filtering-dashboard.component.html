@@ -1,0 +1,51 @@
+<mat-expansion-panel
+  class="filtering-dashboard"
+  hideToggle
+  [expanded]="isDashboardOpen"
+>
+  <div class="filtering-dashboard__container container">
+    <div class="filtering-dashboard__wrapper">
+      <div class="filtering-dashboard__sort-label">Sort by:</div>
+      <div class="filtering-dashboard__sort-option">
+        <button
+          class="filtering-dashboard__sort-btn"
+          mat-button
+          (click)="sortByDate()"
+        >
+          date<mat-icon
+            fontIcon="filter_list"
+            *ngIf="currentSortType === SortTypes.DATE"
+            @zoomIn
+            [@flipIcon]="currentSortOrder"
+          ></mat-icon>
+        </button>
+      </div>
+      <div class="filtering-dashboard__sort-option">
+        <button
+          class="filtering-dashboard__sort-btn"
+          mat-button
+          (click)="sortByViews()"
+        >
+          count of views<mat-icon
+            fontIcon="filter_list"
+            *ngIf="currentSortType === SortTypes.VIEWS"
+            @zoomIn
+            [@flipIcon]="currentSortOrder"
+          ></mat-icon>
+        </button>
+      </div>
+      <div class="filtering-dashboard__input-option">
+        <label
+          class="filtering-dashboard__label"
+          for="filtering-dashboard__input"
+          >by word or sentance</label
+        ><input
+          id="filtering-dashboard__input"
+          class="filtering-dashboard__input"
+          type="text"
+          [(ngModel)]="filterInput"
+        />
+      </div>
+    </div>
+  </div>
+</mat-expansion-panel>

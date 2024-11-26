@@ -1,0 +1,10 @@
+@import "../../../../styles/colors";
+
+.settings-btn {
+  .mat-icon {
+    color: #ffffff;
+  }
+}
+:host ::ng-deep .mat-mdc-mini-fab {
+  background-color: $main-color;
+}

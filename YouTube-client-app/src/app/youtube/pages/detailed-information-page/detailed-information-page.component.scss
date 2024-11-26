@@ -1,0 +1,147 @@
+@import "../../../../styles/colors";
+
+.card-info {
+  display: flex;
+  margin-top: 30px;
+
+  &__back-btn {
+    border-radius: 12px 0px 0px 12px;
+
+    .mat-icon {
+      color: #ffffff;
+    }
+  }
+
+  &__details {
+    width: 1160px;
+    height: 460px;
+
+    border-radius: 0px 12px 12px 12px;
+
+    overflow: hidden;
+  }
+
+  &__wrapper {
+    display: flex;
+  }
+
+  &__img {
+    width: 730px;
+    height: 460px;
+
+    object-fit: cover;
+  }
+
+  &__right-side {
+    background-color: $main-background-color;
+  }
+
+  &__header {
+    overflow: hidden;
+  }
+
+  &__right-side-details {
+    display: grid;
+    grid-template-rows: fit-content(128px) 1fr 40px;
+    align-content: space-between;
+    width: 430px;
+    height: 460px;
+    padding: 19px 19px 0 19px;
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 24px;
+    color: $dark-font-color;
+    word-break: break-word;
+    white-space: pre-line;
+  }
+
+  &__description-container {
+    display: grid;
+    grid-template-rows: 36px 1fr;
+
+    padding-bottom: 10px;
+
+    overflow: hidden;
+
+    .card-info__description-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      h5 {
+        margin: 0;
+
+        font-weight: 700;
+        font-size: 14px;
+        color: $dark-font-color;
+      }
+      .card-info__date {
+        font-weight: 400;
+        font-size: 10px;
+      }
+    }
+
+    .card-info__description {
+      padding-right: 10px;
+
+      overflow-y: auto;
+
+      font-weight: 400;
+      font-size: 12px;
+      word-break: break-word;
+      white-space: pre-line;
+
+      &::-webkit-scrollbar {
+        width: 2px;
+      }
+
+      &::-webkit-scrollbar-track {
+        background: #ffffff;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: $main-color;
+      }
+    }
+  }
+
+  &__statistics {
+    display: flex;
+    justify-content: center;
+    column-gap: 16px;
+  }
+
+  &__counter-wrapper {
+    display: flex;
+    column-gap: 5px;
+
+    .mat-icon {
+      width: 20px;
+      height: 20px;
+
+      font-size: 20px;
+    }
+    span {
+      font-size: 12px;
+    }
+  }
+
+  &__footer {
+    position: absolute;
+    bottom: 0;
+
+    width: 430px;
+  }
+
+  &__date-status {
+    height: 5px;
+  }
+}
+
+:host ::ng-deep .mat-mdc-mini-fab {
+  background-color: $main-color;
+
+  border-radius: 12px 0px 0px 12px;
+}

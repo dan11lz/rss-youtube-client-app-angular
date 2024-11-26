@@ -1,0 +1,23 @@
+<form class="search-form">
+  <mat-form-field class="search-form__field">
+    <input
+      matInput
+      type="text"
+      [(ngModel)]="searchQuery"
+      (ngModelChange)="onSetSearchValue()"
+      name="searchQuery"
+      placeholder="Enter your query"
+    />
+    <button
+      class="search-form__clear-btn"
+      type="button"
+      *ngIf="searchQuery"
+      matSuffix
+      mat-button
+      aria-label="Clear"
+      (click)="searchQuery = ''"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+</form>

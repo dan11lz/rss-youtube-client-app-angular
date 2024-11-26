@@ -1,0 +1,120 @@
+<div class="login-page container">
+  <mat-card class="login-page__wrapper">
+    <mat-card-header class="login-page__header">
+      <mat-card-title class="login-page__title">Login</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="login-page__content">
+      <form
+        class="login-page__form"
+        [formGroup]="loginForm"
+        (ngSubmit)="login()"
+      >
+        <div class="login-page__fields-wrapper">
+          <div class="login-page__recommendations-email">
+            <mat-error
+              *ngIf="
+                loginForm.get('email')?.errors?.['required'] &&
+                loginForm.get('email')?.touched
+              "
+            >
+              Email is required
+            </mat-error>
+            <mat-error
+              *ngIf="
+                loginForm.get('email')?.errors?.['minlength'] &&
+                loginForm.get('email')?.invalid
+              "
+            >
+              Email must be at least 6 characters
+            </mat-error>
+            <mat-error
+              *ngIf="
+                loginForm.get('email')?.errors?.['pattern'] &&
+                loginForm.get('email')?.invalid
+              "
+            >
+              Please enter a valid email address
+            </mat-error>
+            <mat-error
+              *ngIf="
+                loginForm.get('email')?.errors?.['pattern'] &&
+                loginForm.get('email')?.invalid
+              "
+            >
+              Example: example&#64;email.com
+            </mat-error>
+          </div>
+          <mat-form-field class="login-page__email-field form-field">
+            <input
+              class="login-page__email-input form-input"
+              matInput
+              type="email"
+              formControlName="email"
+              placeholder="Enter your email"
+              name="email"
+            />
+          </mat-form-field>
+          <mat-form-field class="login-page__password-field form-field">
+            <input
+              class="login-page__password-input form-input"
+              matInput
+              [type]="isPasswordVisible() ? 'text' : 'password'"
+              formControlName="password"
+              placeholder="Enter your password"
+              name="password"
+            />
+            <button
+              mat-icon-button
+              matSuffix
+              (click)="togglePasswordVisibility()"
+              type="button"
+            >
+              <mat-icon>{{
+                isPasswordVisible() ? "visibility" : "visibility_off"
+              }}</mat-icon>
+            </button>
+          </mat-form-field>
+          <div class="login-page__recommendations-password">
+            <mat-error
+              *ngIf="
+                loginForm.get('password')?.errors?.['required'] &&
+                loginForm.get('password')?.touched
+              "
+            >
+              Password is required
+            </mat-error>
+            <mat-error
+              *ngIf="
+                loginForm.get('password')?.errors?.['passwordStrength'] &&
+                loginForm.get('password')?.dirty
+              "
+            >
+              {{
+                loginForm.get("password")?.errors?.["passwordStrength"].message
+              }}
+              <ul>
+                <li
+                  *ngFor="
+                    let recommendation of loginForm.get('password')?.errors?.[
+                      'passwordStrength'
+                    ].recommendations
+                  "
+                >
+                  {{ recommendation }}
+                </li>
+              </ul>
+            </mat-error>
+          </div>
+        </div>
+        <button
+          [disabled]="loginForm.invalid"
+          class="login-page__btn"
+          mat-flat-button
+          type="submit"
+        >
+          Login
+        </button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

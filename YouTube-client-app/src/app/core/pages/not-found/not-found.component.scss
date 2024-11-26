@@ -1,0 +1,20 @@
+@import "../../../../styles/colors";
+
+.page-not-found {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 80px);
+  gap: 30px;
+  &__img {
+    border-radius: 12px;
+  }
+
+  &__description {
+    margin: 0;
+
+    font-weight: 700;
+    font-size: 24px;
+    color: $secodary-grey-font-color;
+  }
+}

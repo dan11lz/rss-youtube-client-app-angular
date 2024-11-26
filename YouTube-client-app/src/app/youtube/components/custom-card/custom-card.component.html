@@ -1,0 +1,34 @@
+<mat-card class="custom-card">
+  <div class="custom-card__wrapper">
+    <button
+      class="custom-card__delete-btn"
+      type="button"
+      mat-button
+      aria-label="Delete"
+      (click)="onDelete()"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+    <img
+      class="custom-card__img"
+      [src]="customCard.image"
+      [alt]="customCard.title"
+    />
+    <mat-card-title class="custom-card__title">{{
+      customCard.title
+    }}</mat-card-title>
+    <button
+      class="custom-card__btn"
+      mat-flat-button
+      [routerLink]="['info', index + 1]"
+    >
+      more...
+    </button>
+    <mat-card-footer class="custom-card__footer">
+      <div
+        class="custom-card__date-status"
+        [appPublicationDateStatusColor]="customCard.date"
+      ></div>
+    </mat-card-footer>
+  </div>
+</mat-card>

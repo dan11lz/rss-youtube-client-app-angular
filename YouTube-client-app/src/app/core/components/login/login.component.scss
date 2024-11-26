@@ -1,0 +1,28 @@
+@import "../../../../styles/colors";
+
+.login {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  p {
+    margin: 0;
+
+    font-size: 12px;
+  }
+
+  &__account-btn {
+    .mat-icon {
+      color: #ffffff;
+    }
+  }
+}
+:host ::ng-deep .mat-mdc-mini-fab {
+  background-color: $main-color;
+}
+
+::ng-deep .mat-mdc-menu-panel.login__account-menu {
+  margin-top: 10px;
+
+  background-color: #ffffff;
+}

@@ -1,0 +1,62 @@
+@import "../../../../styles/colors";
+
+.search-result-list {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 80px);
+
+  &__cards {
+    display: flex;
+    flex: 1;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 30px 27px;
+  }
+
+  &__pagination {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 30px;
+  }
+
+  &__pagination-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    margin: 0;
+
+    font-size: 20px;
+    color: #ffffff;
+    overflow: hidden;
+    user-select: none;
+
+    background-color: $main-color;
+  }
+
+  &__pagination-btn-back {
+    padding: 0;
+
+    border-radius: 12px 0px 0px 12px;
+
+    .mat-icon {
+      margin: 0;
+
+      color: #ffffff;
+    }
+  }
+
+  &__pagination-btn-forward {
+    padding: 0;
+
+    border-radius: 0px 12px 12px 0px;
+
+    .mat-icon {
+      margin: 0;
+
+      color: #ffffff;
+    }
+  }
+}

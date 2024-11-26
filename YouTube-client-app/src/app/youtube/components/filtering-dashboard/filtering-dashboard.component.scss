@@ -1,0 +1,85 @@
+@import "../../../../styles/colors";
+
+.filtering-dashboard {
+  border-radius: 0;
+  background-color: $main-background-color;
+
+  &__container {
+    display: flex;
+    justify-content: center;
+
+    height: 50px;
+  }
+
+  &__wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 12px;
+  }
+
+  &__sort-label {
+    color: $grey-font-color;
+
+    user-select: none;
+  }
+
+  &__sort-option {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: $main-color;
+
+    text-decoration: underline;
+  }
+
+  &__sort-btn {
+    display: flex;
+    flex-direction: row-reverse;
+
+    font-weight: 400;
+
+    border-radius: 12px;
+
+    .material-icons {
+      width: 20px;
+      height: 20px;
+      margin: 0;
+
+      font-size: 20px;
+      color: $grey-font-color;
+    }
+  }
+
+  &__input-option {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    label {
+      padding: 0 8px;
+
+      color: $main-color;
+    }
+    input {
+      height: 24px;
+      padding: 0 5px;
+
+      font-size: 12px;
+
+      caret-color: $main-color;
+      border-style: none;
+      border-radius: 5px;
+
+      &:focus {
+        outline: solid 1px $main-color;
+      }
+    }
+  }
+}
+
+:host ::ng-deep .mat-expansion-panel-body {
+  padding: 0;
+}

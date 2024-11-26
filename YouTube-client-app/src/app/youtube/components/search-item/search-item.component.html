@@ -1,0 +1,47 @@
+<mat-card class="search-item">
+  <div class="search-item__wrapper">
+    <img
+      class="search-item__img"
+      [src]="item.snippet.thumbnails.high.url"
+      [alt]="item.snippet.title"
+    />
+    <div class="search-item__counters">
+      <div class="search-item__counter-wrapper" title="views">
+        <mat-icon fontIcon="visibility"></mat-icon>
+        <span>{{ item.statistics.viewCount }}</span>
+      </div>
+      <div
+        class="search-item__counter-wrapper"
+        title="likes"
+        *ngIf="item.statistics.likeCount"
+      >
+        <mat-icon fontIcon="thumb_up"></mat-icon>
+        <span>{{ item.statistics.likeCount }}</span>
+      </div>
+      <div
+        class="search-item__counter-wrapper"
+        title="comments"
+        *ngIf="item.statistics.commentCount"
+      >
+        <mat-icon fontIcon="forum"></mat-icon>
+        <span>{{ item.statistics.commentCount }}</span>
+      </div>
+    </div>
+    <mat-card-title class="search-item__title">{{
+      item.snippet.title
+    }}</mat-card-title>
+    <button
+      class="search-item__btn"
+      mat-flat-button
+      [routerLink]="['info', item.id]"
+    >
+      more...
+    </button>
+    <mat-card-footer class="search-item__footer">
+      <div
+        class="search-item__date-status"
+        [appPublicationDateStatusColor]="item.snippet.publishedAt"
+      ></div>
+    </mat-card-footer>
+  </div>
+</mat-card>

@@ -1,0 +1,10 @@
+<div class="login" *ngIf="isUserLoggedIn$ | async">
+  <p>{{ userEmail | slice: 0 : 43 }}</p>
+  <app-custom-button class="login__account-btn" [matMenuTriggerFor]="menu"
+    ><mat-icon fontIcon="account_box"></mat-icon
+  ></app-custom-button>
+  <mat-menu class="login__account-menu" #menu="matMenu" xPosition="before">
+    <button mat-menu-item (click)="goToAdmin()">Admin</button>
+    <button mat-menu-item (click)="logout()">Logout</button>
+  </mat-menu>
+</div>

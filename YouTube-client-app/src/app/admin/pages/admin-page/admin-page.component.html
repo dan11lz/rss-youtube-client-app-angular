@@ -1,0 +1,146 @@
+<div class="admin-page container">
+  <mat-card
+    class="admin-page__wrapper"
+    *ngIf="customCardsMaxLimit$ | async; else maxLimitMessage"
+  >
+    <mat-card-header class="admin-page__header">
+      <mat-card-title class="admin-page__title">Create new card</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="admin-page__content">
+      <form
+        class="admin-page__form"
+        [formGroup]="cardForm"
+        (ngSubmit)="onSubmit()"
+      >
+        <div class="admin-page__fields-wrapper">
+          <mat-form-field class="form-field">
+            <mat-label>Title</mat-label>
+            <input matInput type="text" formControlName="title" />
+            <mat-error *ngIf="cardForm.get('title')?.errors?.['required']">
+              Please enter a title
+            </mat-error>
+            <mat-error *ngIf="cardForm.get('title')?.errors?.['minlength']">
+              The title is too short
+            </mat-error>
+            <mat-error *ngIf="cardForm.get('title')?.errors?.['maxlength']">
+              The title is too long
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="form-field"
+            ><mat-label>Description</mat-label
+            ><input
+              matInput
+              type="text"
+              formControlName="description"
+            /><mat-error
+              *ngIf="cardForm.get('description')?.errors?.['maxlength']"
+            >
+              The description is too long
+            </mat-error></mat-form-field
+          >
+          <mat-form-field class="form-field"
+            ><mat-label>Image link</mat-label
+            ><input matInput type="text" formControlName="image" />
+            <mat-error *ngIf="cardForm.get('image')?.errors?.['required']">
+              Please enter a link to the image
+            </mat-error></mat-form-field
+          >
+          <mat-form-field class="form-field"
+            ><mat-label>Video link</mat-label
+            ><input matInput type="text" formControlName="video" />
+            <mat-error *ngIf="cardForm.get('video')?.errors?.['required']">
+              Please enter a link to the video
+            </mat-error>
+            <mat-error *ngIf="cardForm.get('video')?.errors?.['pattern']">
+              Please enter a valid youtube video link
+            </mat-error></mat-form-field
+          >
+          <mat-form-field class="form-field"
+            ><mat-label>Data</mat-label>
+            <input
+              matInput
+              [matDatepicker]="picker"
+              formControlName="date"
+              placeholder="MM/DD/YYYY"
+            />
+            <mat-datepicker-toggle
+              matIconSuffix
+              [for]="picker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker
+            ><mat-error *ngIf="cardForm.get('date')?.errors?.['required']">
+              Please enter a creation date
+            </mat-error>
+            <mat-error *ngIf="cardForm.get('date')?.errors?.['noFutureDate']">
+              {{ cardForm.get("date")?.errors?.["noFutureDate"].message }}
+            </mat-error></mat-form-field
+          >
+          <ng-container formArrayName="tags" class="admin-page__tags">
+            <ng-container
+              *ngFor="let tag of tags.controls; let i = index"
+              class="admin-page__tag-input"
+            >
+              <mat-form-field class="form-field">
+                <mat-label>Tag</mat-label>
+                <input
+                  matInput
+                  type="text"
+                  [formControlName]="i"
+                  placeholder="#tag"
+                />
+                <button
+                  *ngIf="i > 0"
+                  (click)="removeTag(i)"
+                  type="button"
+                  mat-icon-button
+                  class="admin-page__remove-tag-button"
+                  matSuffix
+                >
+                  <mat-icon>close</mat-icon>
+                </button>
+                <mat-error *ngIf="tags.controls[i].hasError('required')">
+                  Tag is required
+                </mat-error>
+                <mat-error *ngIf="tags.controls[i].hasError('pattern')">
+                  The tag must start with # and have a length between 2 and 20
+                </mat-error>
+              </mat-form-field>
+            </ng-container>
+            <button
+              *ngIf="showAddButton()"
+              (click)="addTag()"
+              type="button"
+              mat-button
+              class="admin-page__add-tag-btn"
+            >
+              Add tag
+            </button>
+          </ng-container>
+        </div>
+        <div class="admin-page__btn-wrapper">
+          <button
+            class="admin-page__reset-btn btn"
+            mat-flat-button
+            type="button"
+            (click)="reset()"
+          >
+            Reset
+          </button>
+          <button
+            class="admin-page__create-btn btn"
+            mat-flat-button
+            type="submit"
+            [disabled]="cardForm.invalid"
+          >
+            Create card
+          </button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+  <ng-template #maxLimitMessage>
+    <p class="admin-page__limit-message">
+      No more than 20 cards can be created
+    </p>
+  </ng-template>
+</div>

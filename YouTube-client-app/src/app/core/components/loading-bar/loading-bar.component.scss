@@ -1,0 +1,27 @@
+@import "../../../../styles/colors";
+
+.loading-bar {
+  box-sizing: border-box;
+  position: absolute;
+  top: 0;
+
+  width: 100px;
+  height: 2px;
+
+  background: $main-color;
+
+  animation: edgeToEdge 0.5s ease-in-out infinite alternate;
+
+  z-index: 999;
+}
+
+@keyframes edgeToEdge {
+  0% {
+    left: 0;
+    transform: translateX(0);
+  }
+  100% {
+    left: 100%;
+    transform: translateX(-100%);
+  }
+}

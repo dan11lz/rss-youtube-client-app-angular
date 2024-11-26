@@ -1,0 +1,98 @@
+@import "../../../../styles/colors";
+
+.login-page {
+  display: flex;
+  justify-content: center;
+  height: calc(100vh - 80px);
+
+  &__wrapper {
+    width: 350px;
+    height: fit-content;
+    max-height: 594px;
+    margin-top: 45px;
+    gap: 20px;
+
+    background-color: $third-grey-font-color;
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 18px;
+    color: $dark-font-color;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  &__fields-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__btn {
+    width: 120px;
+
+    border-radius: 12px;
+
+    font-weight: 400;
+  }
+}
+
+.form-field {
+  width: 318px;
+  height: 40px;
+
+  input {
+    font-size: 12px;
+  }
+}
+
+:host ::ng-deep .form-field {
+  .mdc-text-field {
+    padding: 0 10px;
+  }
+  .mat-mdc-form-field-subscript-wrapper {
+    display: none;
+  }
+  .mdc-text-field--no-label:not(.mdc-text-field--outlined):not(
+      .mdc-text-field--textarea
+    )
+    .mat-mdc-form-field-infix {
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
+  .mat-mdc-form-field-infix {
+    width: 100%;
+    height: 40px;
+    min-height: 40px;
+  }
+  .mdc-text-field--no-label:not(.mdc-text-field--textarea)
+    .mat-mdc-form-field-input-control.mdc-text-field__input,
+  .mat-mdc-text-field-wrapper .mat-mdc-form-field-input-control {
+    height: 40px;
+  }
+  .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+    background-color: #ffffff;
+  }
+  .mdc-text-field--filled {
+    --mdc-filled-text-field-container-shape: 0px;
+  }
+}
+
+:host
+  .login-page__password-field
+  .login-page__password-input[type="password"]::-ms-reveal {
+  display: none;
+}

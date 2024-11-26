@@ -1,0 +1,47 @@
+<div *ngIf="hasResults$ | async" class="container search-result-list">
+  <ng-container *ngIf="cardsList$ | async as cards">
+    <div class="search-result-list__cards">
+      <app-custom-card
+        *ngFor="let card of cards.customCards; let i = index"
+        [customCard]="card"
+        [index]="i"
+        (deleteCard)="deleteCustomCard($event)"
+      ></app-custom-card>
+      <app-search-item
+        *ngFor="
+          let card of cards.youtubeResults
+            | filter: filterValue()
+            | sort: currentSortType : currentSortOrder
+        "
+        [item]="card"
+      ></app-search-item>
+    </div>
+  </ng-container>
+  <div class="search-result-list__pagination">
+    <button
+      [style.visibility]="
+        (hasPrevPage$ | async) === null ? 'hidden' : 'visible'
+      "
+      [disabled]="isLoading()"
+      class="search-result-list__pagination-btn-back"
+      mat-flat-button
+      (click)="onPrevPage()"
+    >
+      <mat-icon fontIcon="arrow_back"></mat-icon>
+    </button>
+    <p class="search-result-list__pagination-page">
+      {{ currentPage$ | async }}
+    </p>
+    <button
+      [style.visibility]="
+        (hasNextPage$ | async) === null ? 'hidden' : 'visible'
+      "
+      [disabled]="isLoading()"
+      class="search-result-list__pagination-btn-forward"
+      mat-flat-button
+      (click)="onNextPage()"
+    >
+      <mat-icon fontIcon="arrow_forward"></mat-icon>
+    </button>
+  </div>
+</div>

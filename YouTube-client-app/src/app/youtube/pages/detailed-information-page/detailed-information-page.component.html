@@ -1,0 +1,114 @@
+<section *ngIf="cardInfo$ | async as cardInfo" class="card-info container">
+  <app-custom-button class="card-info__back-btn" routerLink="/main"
+    ><mat-icon fontIcon="arrow_back"></mat-icon
+  ></app-custom-button>
+  <mat-card class="card-info__details">
+    <div class="card-info__wrapper">
+      <a
+        [href]="'https://www.youtube.com/watch?v=' + cardInfo.id"
+        target="_blank"
+      >
+        <img
+          class="card-info__img"
+          [src]="
+            cardInfo.snippet.thumbnails.maxres?.url ||
+            cardInfo.snippet.thumbnails.standard?.url ||
+            cardInfo.snippet.thumbnails.high.url
+          "
+          [alt]="cardInfo.snippet.title"
+        />
+      </a>
+      <div class="card-info__right-side">
+        <div class="card-info__right-side-details">
+          <mat-card-header class="card-info__header">
+            <mat-card-title class="card-info__title"
+              >{{ cardInfo.snippet.title }}
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content class="card-info__description-container">
+            <div class="card-info__description-wrapper">
+              <h5>Description:</h5>
+              <div class="card-info__date">
+                {{ cardInfo.snippet.publishedAt | date: "fullDate" }}
+              </div>
+            </div>
+            <p class="card-info__description">
+              {{ cardInfo.snippet.description }}
+            </p>
+          </mat-card-content>
+          <mat-card-content class="card-info__statistics">
+            <div class="card-info__counter-wrapper" title="views">
+              <mat-icon fontIcon="visibility"></mat-icon>
+              <span>{{ cardInfo.statistics.viewCount }}</span>
+            </div>
+            <div
+              class="card-info__counter-wrapper"
+              title="likes"
+              *ngIf="cardInfo.statistics.likeCount"
+            >
+              <mat-icon fontIcon="thumb_up"></mat-icon>
+              <span>{{ cardInfo.statistics.likeCount }}</span>
+            </div>
+            <div
+              class="card-info__counter-wrapper"
+              title="comments"
+              *ngIf="cardInfo.statistics.commentCount"
+            >
+              <mat-icon fontIcon="forum"></mat-icon>
+              <span>{{ cardInfo.statistics.commentCount }}</span>
+            </div>
+          </mat-card-content>
+        </div>
+        <mat-card-footer class="card-info__footer">
+          <div
+            class="card-info__date-status"
+            [appPublicationDateStatusColor]="cardInfo.snippet.publishedAt"
+          ></div>
+        </mat-card-footer>
+      </div>
+    </div>
+  </mat-card>
+</section>
+<section
+  *ngIf="customCardInfo$ | async as customCard"
+  class="card-info container"
+>
+  <app-custom-button class="card-info__back-btn" routerLink="/main"
+    ><mat-icon fontIcon="arrow_back"></mat-icon
+  ></app-custom-button>
+  <mat-card class="card-info__details">
+    <div class="card-info__wrapper">
+      <img
+        class="card-info__img"
+        [src]="customCard.image"
+        [alt]="customCard.title"
+      />
+      <div class="card-info__right-side">
+        <div class="card-info__right-side-details">
+          <mat-card-header class="card-info__header">
+            <mat-card-title class="card-info__title"
+              >{{ customCard.title }}
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content class="card-info__description-container">
+            <div class="card-info__description-wrapper">
+              <h5 *ngIf="customCard.description">Description:</h5>
+              <div class="card-info__date">
+                {{ customCard.date | date: "fullDate" }}
+              </div>
+            </div>
+            <p class="card-info__description">
+              {{ customCard.description }}
+            </p>
+          </mat-card-content>
+        </div>
+        <mat-card-footer class="card-info__footer">
+          <div
+            class="card-info__date-status"
+            [appPublicationDateStatusColor]="customCard.date"
+          ></div>
+        </mat-card-footer>
+      </div>
+    </div>
+  </mat-card>
+</section>
